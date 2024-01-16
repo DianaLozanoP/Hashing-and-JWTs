@@ -3,6 +3,7 @@ const User = require("../models/user");
 const Message = require("../models/message");
 
 
+
 describe("Test User class", function () {
   beforeEach(async function () {
     await db.query("DELETE FROM messages");
@@ -22,7 +23,7 @@ describe("Test User class", function () {
       password: "password",
       first_name: "Joel",
       last_name: "Burton",
-      phone: "+14155551212",
+      phone: "+14155551212"
     });
 
     expect(u.username).toBe("joel");
@@ -33,7 +34,7 @@ describe("Test User class", function () {
     let isValid = await User.authenticate("test", "password");
     expect(isValid).toBeTruthy();
 
-    isValid =  await User.authenticate("test", "xxx");
+    isValid = await User.authenticate("test", "xxx");
     expect(isValid).toBeFalsy();
   });
 
@@ -136,6 +137,6 @@ describe("Test messages part of User class", function () {
   });
 });
 
-afterAll(async function() {
+afterAll(async function () {
   await db.end();
 });
